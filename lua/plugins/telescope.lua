@@ -12,9 +12,27 @@ return {
         -- Load the live_grep_args extension
         telescope.load_extension('live_grep_args')
 
+        telescope.setup({
+            defaults = {
+                file_ignore_patterns = { "node_modules", "dist", "build", ".git" },
+            },
+            pickers = {
+                find_files = {
+                    -- Don't show the full path, just the filename
+                    path_display = { shorten = { len = 2, exclude = {-1, -2} } },
+                    no_ignore = true, -- Don't ignore files in .gitignore
+                },
+                live_grep = {
+                    additional_args = function()
+                        return { "--no-ignore" } -- Include hidden files in live_grep
+                    end,
+                }
+            }
+        })
+
         -- Setup keymaps
         vim.keymap.set('n', '<leader>ff',
-            ":lua require('telescope.builtin').find_files{ path_display = { shorten = { len = 2, exclude = {-1} } } }<CR>",
+            ":lua require('telescope.builtin').find_files()<CR>",
             {})
         vim.keymap.set('n', '<leader>fg', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", {})
         vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
