@@ -198,6 +198,10 @@ return {
             -- use this to beautify the plain E W signs to more fun ones
             -- !important nerdfonts needs to be setup for this to work in your terminal
             vim.diagnostic.config({
+                virtual_text = true,
+                signs = true,
+                update_in_insert = false,
+                underline = true,
                 signs = {
                     text = {
                         [vim.diagnostic.severity.ERROR] = " ",
@@ -220,6 +224,7 @@ return {
                 }
             })
 
+            --[[
             vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
                 vim.lsp.diagnostic.on_publish_diagnostics,
                 {
@@ -229,6 +234,7 @@ return {
                     underline = true,
                 }
             )
+            --]]
 
             vim.g.markdown_fenced_languages = {
                 "ts=typescript"
