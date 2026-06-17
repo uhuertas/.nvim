@@ -254,6 +254,9 @@ return {
                 "terraformls",
                 "gopls",
                 "yamlls",
+                "csharp_ls",
+                "gh_actions_ls",
+                --"angularls",
                 --"tsgo"
             });
         end

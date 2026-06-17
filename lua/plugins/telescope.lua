@@ -15,9 +15,10 @@ return {
         telescope.setup({
             defaults = {
                 file_ignore_patterns = {
-                    "node_modules",
-                    "dist",
-                    "build",
+                    "^node_modules/",
+                    "^.next/",
+                    "^dist/",
+                    "^build/",
                     "^.git/"
                 },
             },

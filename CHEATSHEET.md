@@ -16,3 +16,8 @@ Then you have two options:
 
 - Load the buffer as qflist
   `:cgetexpr getline(1,'$')`
+
+## Search and replace (multi-file)
+
+- Search using Telescope and save the results into quickfixlist
+- `:cdo s/old-word/new-word/ge | update`
